@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<script type="text/javascript">
+		var chku = 0;
+		var chks = 0;
+		function checkusername() {
+			var inp = document.getElementsByName("username")[0];
+			if(inp.value == "<{$data['username']}>") {
+				chku = 0;
+			}else{
+				chku = 1;
+			}
+			check();
+		}
+		function checksex() {
+			var sex = <{$data['sex']}>;
+			var sex0 = document.getElementsByName("sex")[0].checked;
+			var sex1 = document.getElementsByName("sex")[1].checked;
+			if(sex == 1 && sex1) {
+				chks = 1;
+			}else if(sex == 1 && sex0){
+				chks = 0;
+			}else if(sex == 0 && sex0) {
+				chks = 1;
+			}else if(sex == 0 && sex1) {
+				chks = 0;
+			}
+			check();
+		}
+		function check() {
+			var subbtn = document.getElementsByName("submitbtn")[0];
+			if(chku || chks) {
+				subbtn.removeAttribute("disabled");
+				subbtn.innerHTML = "UPDATE";
+			}else{
+				subbtn.disabled = "disabled";
+				subbtn.innerHTML = "Please Modify";
+			}
+		}
+	</script>
+</head>
+<body>
+<form role="form" action="__URL__/update" method="post">
+	<div class="form-group">
+		<label for="username">Username</label>
+		<input type="text" class="form-control" name="username" id="username" value="<{$data['username']}>" onblur="checkusername()">
+	</div>
+	
+	<label>Sex</label>
+
+	<br>
+
+	<label class="radio-inline">
+		<input type="radio" name="sex" value="1" onclick="checksex()">Male
+	</label>
+
+	<label class="radio-inline">
+		<input type="radio" name="sex" value="0" onclick="checksex()">Female
+	</label>
+
+	<input type="hidden" class="btn btn-primary btn-block" name="id" value="<{$data['id']}>">
+
+	<button type="submit" class="btn btn-primary btn-block" name="submitbtn" disabled="disabled">Please Modify</button>
+
+	<a href="__URL__/index" class="btn btn-primary btn-block" role="button">Go Back</a>
+</form>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		if(<{$data['sex']}> == 1) {
+			document.getElementsByName("sex")[0].checked = "checked";
+		}else if(<{$data['sex']}> == 0){
+			document.getElementsByName("sex")[1].checked = "checked";
+		}	
+	}
+</script>
+</body>
+</html>

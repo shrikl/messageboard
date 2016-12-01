@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<script type="text/javascript">
+		function check() {
+			var val = document.getElementsByName("username")[0].value;
+			var pas = document.getElementById("password").value;
+			var subbtn = document.getElementsByName("submitbtn")[0];
+			if(val != "" && pas != "") {
+				subbtn.innerHTML = "Add";
+				subbtn.removeAttribute("disabled");
+			}else{
+				subbtn.innerHTML = "Please Input Username";
+				subbtn.disabled = "disabled";
+			}
+		}
+	</script>
+</head>
+<body>
+<form role="form" action="__URL__/create" method="post">
+	<div class="form-group">
+		<label for="username">Username</label>
+		<input type="text" class="form-control" name="username" id="username" onblur="check()">
+	</div>
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" name="password" id="password" onblur="check()">
+	</div>
+	
+	<label>Sex</label>
+	<br>
+	<label class="radio-inline">
+		<input type="radio" name="sex" value="1" checked="">Male
+	</label>
+	<label class="radio-inline">
+		<input type="radio" name="sex" value="0">Female
+	</label>
+
+	<br><br>
+
+	<button type="submit" class="btn btn-primary btn-block" name="submitbtn" disabled="">Please Input Username</button>
+	
+	<a href="__URL__/index" class="btn btn-primary btn-block" role="button">Go Back</a>
+</form>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<style type="text/css">
+		.hwh-page-info a{color: #CCC;}.hwh-page-info a em{font-style: normal;margin: 0 2px;}
+	</style>
+</head>
+<body>
+<foreach name="list" item="vo">
+	title:
+	<{$vo.title}>
+	<br>
+	content:
+	<{$vo.content}>
+	<br>
+	time:
+	<{$vo.time|date='Y m d H:i:s',###}>
+	<br>
+	uid:
+	<{$vo.username}>
+	<br>
+	filename:
+	<{$vo.filename}>
+	<hr>
+</foreach>
+
+<{$show}>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

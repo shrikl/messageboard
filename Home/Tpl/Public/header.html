@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<style type="text/css">
+		#dh{
+			height: 150px;
+			background-color: #abcdef;
+		}
+		a{
+			font-size: 60px;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+<div id="dh">
+	<foreach name="list" item="v">
+		<a href="__APP__/City/<{$v.name}>"><{$v.name}></a>&nbsp;&nbsp;&nbsp;&nbsp;
+	</foreach>
+</div>
